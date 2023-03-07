@@ -12,7 +12,7 @@ export class DevicesComponent implements OnInit {
 
   // При инициализации список устройств проходит проверку на наличие данных в localstorage
   ngOnInit(): void {
-    const deviceList = localStorage.getItem('deviceList');
+    const deviceList: string | null = localStorage.getItem('deviceList');
     if (this.devices.length == 0) {
       //Если localstorage не пуст - берем из него список
       if (deviceList !== null) {
@@ -23,4 +23,16 @@ export class DevicesComponent implements OnInit {
       }
     }
   }
+
+  createDevice = (device: IDevice): void => {
+    this.devices.push(device);
+    localStorage.setItem('deviceList', JSON.stringify(this.devices));
+  };
+
+  removeDevice = (id: string): void => {
+    this.devices = this.devices.filter((device) => device.id !== id);
+    localStorage.setItem('deviceList', JSON.stringify(this.devices));
+    // Чтобы не оставлять пустой массив в localstorage, просто удаляем данные из него
+    if (this.devices.length == 0) localStorage.clear();
+  };
 }

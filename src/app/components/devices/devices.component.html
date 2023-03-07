@@ -1,1 +1,5 @@
-
+<section>
+  <div *ngFor="let device of devices">
+    <p (click)="removeDevice(device.id)">Тип устройства{{device.deviceType}}</p>
+  </div>
+</section>
