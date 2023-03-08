@@ -9,6 +9,18 @@ import { devices } from '../../data/devices';
 })
 export class DevicesComponent implements OnInit {
   devices: IDevice[] = [];
+  displayedColumns: string[] = [
+    'id',
+    'title',
+    'deviceType',
+    'enabled',
+    'houseId',
+    'lastActivity',
+    'status',
+    'locations',
+    'settings',
+    'action',
+  ];
 
   // При инициализации список устройств проходит проверку на наличие данных в localstorage
   ngOnInit(): void {
