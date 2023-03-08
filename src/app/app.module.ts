@@ -11,9 +11,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './components/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
-  declarations: [AppComponent, DevicesComponent],
+  declarations: [AppComponent, DevicesComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSortModule,
     MatIconModule,
     MatButtonModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

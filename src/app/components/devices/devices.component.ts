@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IDevice } from '../../models/device';
 import { devices } from '../../data/devices';
 
@@ -7,8 +7,9 @@ import { devices } from '../../data/devices';
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss'],
 })
-export class DevicesComponent implements OnInit {
-  devices: IDevice[] = [];
+export class DevicesComponent {
+  @Input()
+  devices!: IDevice[];
   displayedColumns: string[] = [
     'id',
     'title',
@@ -18,23 +19,11 @@ export class DevicesComponent implements OnInit {
     'lastActivity',
     'status',
     'locations',
-    'settings',
+    'name',
+    'port',
+    'password',
     'action',
   ];
-
-  // При инициализации список устройств проходит проверку на наличие данных в localstorage
-  ngOnInit(): void {
-    const deviceList: string | null = localStorage.getItem('deviceList');
-    if (this.devices.length == 0) {
-      //Если localstorage не пуст - берем из него список
-      if (deviceList !== null) {
-        this.devices = JSON.parse(deviceList);
-      } else {
-        this.devices = devices;
-        localStorage.setItem('deviceList', JSON.stringify(this.devices));
-      }
-    }
-  }
 
   createDevice = (device: IDevice): void => {
     this.devices.push(device);
