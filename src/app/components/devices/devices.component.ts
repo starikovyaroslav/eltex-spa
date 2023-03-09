@@ -11,7 +11,7 @@ import { DevicesService } from '../../services/devices.service';
 })
 export class DevicesComponent {
   constructor(private devicesService: DevicesService) {}
-  devices$!: Observable<IDevice[]>;
+  devices$: Observable<IDevice[]> = this.devicesService.devices;
   displayedColumns: string[] = [
     'id',
     'title',
@@ -27,10 +27,7 @@ export class DevicesComponent {
     'action',
   ];
 
-  /*removeDevice = (id: string): void => {
-    this.devices$ = this.devices$.filter((device) => device.id !== id);
-    localStorage.setItem('deviceList', JSON.stringify(this.devices$));
-    // Чтобы не оставлять пустой массив в localstorage, просто удаляем данные из него
-    if (this.devices$.length == 0) localStorage.clear();
-  };*/
+  removeDevice = (id: string): void => {
+    this.devicesService.removeDevice(id);
+  };
 }

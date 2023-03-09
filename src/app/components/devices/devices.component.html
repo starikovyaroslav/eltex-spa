@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="devices$ | async" class="mat-elevation-z8">
+<table mat-table [dataSource]="devices$" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>{{ "id" | uppercase }}</th>
     <td mat-cell *matCellDef="let device">{{ device.id }}</td>
@@ -65,7 +65,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>{{ "action" | uppercase }}</th>
     <td mat-cell *matCellDef="let device">
-      <button mat-icon-button color="warn">
+      <button mat-icon-button color="warn" (click)="removeDevice(device.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

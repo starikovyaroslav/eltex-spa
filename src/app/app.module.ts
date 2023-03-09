@@ -13,6 +13,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DevicesService } from './services/devices.service';
 
 @NgModule({
   declarations: [AppComponent, DevicesComponent, HeaderComponent],
@@ -28,7 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatToolbarModule,
   ],
-  providers: [],
+  providers: [DevicesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

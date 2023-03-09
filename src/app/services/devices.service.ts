@@ -9,28 +9,46 @@ import { BehaviorSubject, Observable, take } from 'rxjs';
 export class DevicesService {
   constructor() {}
 
-  devices: BehaviorSubject<IDevice[]> = new BehaviorSubject<IDevice[]>(devices);
+  devices: BehaviorSubject<IDevice[]> = new BehaviorSubject<IDevice[]>([]);
 
   devices$: Observable<IDevice[]> = this.devices.asObservable();
 
+  //При инициализации список устройств проходит проверку на наличие данных в localstorage
+  getAllDevices = () => {
+    const deviceList: string | null = localStorage.getItem('deviceList');
+    //Если localstorage не пуст - берем из него список
+    if (this.devices$) {
+      if (deviceList !== null) {
+        this.devices.next(JSON.parse(deviceList));
+      } else {
+        this.devices.next(devices);
+        localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
+      }
+    }
+  };
+
+  //Создание устройства
   createDevice = (device: IDevice): void => {
     this.devices$.pipe(take(1)).subscribe((value) => {
       const newDeviceList: IDevice[] = [...value, device];
       this.devices.next(newDeviceList);
     });
-    localStorage.setItem('deviceList', JSON.stringify(this.devices$));
+    localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
   };
 
-  //todo поправить удаление
+  //Удаление устройства
   removeDevice = (id: string): void => {
-    this.devices$.pipe(take(1)).subscribe((value) => {
-      const newDeviceList: IDevice[] = this.devices.filter(
-        (device) => device.id !== id
-      );
-    });
+    const currentDevices: IDevice[] = this.devices.value;
+    const newDeviceList: IDevice[] = currentDevices.filter(
+      (device) => device.id !== id
+    );
+    this.devices.next(newDeviceList);
+    localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
+  };
 
-    localStorage.setItem('deviceList', JSON.stringify(this.devices$));
-    // Чтобы не оставлять пустой массив в localstorage, просто удаляем данные из него
-    if (this.devices$.length == 0) localStorage.clear();
+  //Сброс списка устройства
+  resetDeviceList = (): void => {
+    this.devices.next(devices);
+    localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
   };
 }

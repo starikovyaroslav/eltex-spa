@@ -14,22 +14,8 @@ export class AppComponent implements OnInit {
   title = 'eltex-spa';
   devices$!: Observable<IDevice[]>;
 
-  // При инициализации список устройств проходит проверку на наличие данных в localstorage
+  // При инициализации получаем список устройств
   ngOnInit(): void {
-    const deviceList: string | null = localStorage.getItem('deviceList');
-    if (this.devices$) {
-      //Если localstorage не пуст - берем из него список
-      if (deviceList !== null) {
-        this.devices$ = JSON.parse(deviceList);
-      } else {
-        this.devices$ = this.devicesService.devices;
-        localStorage.setItem('deviceList', JSON.stringify(this.devices$));
-      }
-    }
+    this.devicesService.getAllDevices();
   }
-
-  // updateDeviceList = (): void => {
-  //   this.devices = devices;
-  //   console.log(this.devices);
-  // };
 }
