@@ -14,9 +14,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DevicesService } from './services/devices.service';
+import { ModalFormComponent } from './components/modal-form/modal-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
-  declarations: [AppComponent, DevicesComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    DevicesComponent,
+    HeaderComponent,
+    ModalFormComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +41,14 @@ import { DevicesService } from './services/devices.service';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    FormsModule,
   ],
   providers: [DevicesService],
   bootstrap: [AppComponent],

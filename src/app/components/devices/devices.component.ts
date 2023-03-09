@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { IDevice } from '../../models/device';
-import { devices } from '../../data/devices';
 import { Observable } from 'rxjs';
 import { DevicesService } from '../../services/devices.service';
 

@@ -29,8 +29,12 @@ export class DevicesService {
 
   //Создание устройства
   createDevice = (device: IDevice): void => {
+    const newDevice: IDevice = {
+      ...device,
+      id: String(this.devices.value.length + 1),
+    };
     this.devices$.pipe(take(1)).subscribe((value) => {
-      const newDeviceList: IDevice[] = [...value, device];
+      const newDeviceList: IDevice[] = [...value, newDevice];
       this.devices.next(newDeviceList);
     });
     localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
