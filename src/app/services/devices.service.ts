@@ -7,8 +7,6 @@ import { BehaviorSubject, Observable, take } from 'rxjs';
   providedIn: 'root',
 })
 export class DevicesService {
-  constructor() {}
-
   devices: BehaviorSubject<IDevice[]> = new BehaviorSubject<IDevice[]>([]);
 
   devices$: Observable<IDevice[]> = this.devices.asObservable();
@@ -31,7 +29,7 @@ export class DevicesService {
   createDevice = (device: IDevice): void => {
     const newDevice: IDevice = {
       ...device,
-      id: String(this.devices.value.length + 1),
+      id: String(Date.now()),
     };
     this.devices$.pipe(take(1)).subscribe((value) => {
       const newDeviceList: IDevice[] = [...value, newDevice];

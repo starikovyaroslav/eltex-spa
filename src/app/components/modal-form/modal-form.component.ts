@@ -10,7 +10,7 @@ import { DeviceType, Status } from '../../models/device';
   styleUrls: ['./modal-form.component.scss'],
 })
 export class ModalFormComponent {
-  empForm: FormGroup;
+  deviceForm: FormGroup;
 
   deviceType: DeviceType[] = [
     DeviceType.ELTEX_DIMMER,
@@ -35,7 +35,7 @@ export class ModalFormComponent {
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ModalFormComponent>
   ) {
-    this.empForm = this.formBuilder.group({
+    this.deviceForm = this.formBuilder.group({
       title: '',
       deviceType: DeviceType['' as keyof typeof DeviceType],
       enabled: '',
@@ -52,9 +52,8 @@ export class ModalFormComponent {
   }
 
   onFormSubmit() {
-    if (this.empForm.valid) {
-      console.log(this.empForm.value);
-      this.deviceService.createDevice(this.empForm.value);
+    if (this.deviceForm.valid) {
+      this.deviceService.createDevice(this.deviceForm.value);
       this.dialogRef.close(true);
     }
   }

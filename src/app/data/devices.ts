@@ -2,7 +2,7 @@ import { DeviceType, IDevice, Status } from '../models/device';
 
 export const devices: IDevice[] = [
   {
-    id: '1',
+    id: '1678426089325',
     title: 'Устройство-1',
     deviceType: DeviceType.ELTEX_DIMMER,
     enabled: true,
@@ -13,7 +13,7 @@ export const devices: IDevice[] = [
     settings: { name: 'Устройство-1', port: '1', password: '123' },
   },
   {
-    id: '2',
+    id: '1678426089326',
     title: 'Устройство-2',
     deviceType: DeviceType.ELTEX_MOTION,
     enabled: true,
@@ -24,7 +24,7 @@ export const devices: IDevice[] = [
     settings: { name: 'Устройство-2', port: '2', password: '123' },
   },
   {
-    id: '3',
+    id: '1678426089327',
     title: 'Устройство-3',
     deviceType: DeviceType.ELTEX_SZ_AIR,
     enabled: false,

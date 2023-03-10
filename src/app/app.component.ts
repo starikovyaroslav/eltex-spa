@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IDevice } from './models/device';
-import { devices } from './data/devices';
 import { DevicesService } from './services/devices.service';
 import { Observable } from 'rxjs';
 
@@ -11,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   constructor(private devicesService: DevicesService) {}
+
   title = 'eltex-spa';
   devices$!: Observable<IDevice[]>;
 
