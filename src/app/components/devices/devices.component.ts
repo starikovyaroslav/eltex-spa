@@ -6,7 +6,6 @@ import { DevicesService } from '../../services/devices.service';
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.scss'],
 })
 export class DevicesComponent {
   constructor(private devicesService: DevicesService) {}

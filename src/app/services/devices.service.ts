@@ -32,7 +32,7 @@ export class DevicesService {
       id: String(Date.now()),
     };
     this.devices$.pipe(take(1)).subscribe((value) => {
-      const newDeviceList: IDevice[] = [...value, newDevice];
+      const newDeviceList: IDevice[] = [newDevice, ...value];
       this.devices.next(newDeviceList);
     });
     localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
