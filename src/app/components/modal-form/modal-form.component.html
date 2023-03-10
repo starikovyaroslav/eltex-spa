@@ -1,0 +1,121 @@
+<div mat-dialog-title>
+  <h1>Добавление устройства</h1>
+</div>
+<form [formGroup]="deviceForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          required
+          matInput
+          type="text"
+          placeholder="Title"
+          formControlName="title"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Device Type</mat-label>
+        <mat-select required formControlName="deviceType">
+          <mat-option *ngFor="let val of deviceType" [value]="val"
+            >{{ val }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>HouseID</mat-label>
+        <input
+          required
+          matInput
+          type="text"
+          placeholder="HouseID"
+          formControlName="houseId"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select required formControlName="status">
+          <mat-option *ngFor="let val of status" [value]="val"
+            >{{ val }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <section class="example-section">
+        <mat-checkbox
+          class="example-margin"
+          [(ngModel)]="enabled"
+          formControlName="enabled"
+          value="true"
+          >Enabled</mat-checkbox
+        >
+      </section>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Last Activity</mat-label>
+        <input
+          required
+          min="0"
+          matInput
+          placeholder="Last Activity"
+          type="number"
+          formControlName="lastActivity"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Locations</mat-label>
+        <input
+          required
+          matInput
+          type="text"
+          placeholder="Locations"
+          formControlName="locations"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row" formGroupName="settings">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          required
+          matInput
+          type="text"
+          placeholder="Name"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Port</mat-label>
+        <input
+          required
+          matInput
+          type="text"
+          placeholder="Port"
+          formControlName="port"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          required
+          matInput
+          type="text"
+          placeholder="Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">
+      Отмена
+    </button>
+    <button mat-raised-button color="primary" type="submit">Создать</button>
+  </div>
+</form>
