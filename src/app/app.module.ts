@@ -9,7 +9,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,7 +21,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +36,6 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
@@ -50,7 +47,6 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatCheckboxModule,
     FormsModule,
-    HttpClientModule,
   ],
   providers: [DevicesService],
   bootstrap: [AppComponent],
