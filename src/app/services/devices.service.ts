@@ -7,12 +7,14 @@ import { BehaviorSubject, Observable, take } from 'rxjs';
   providedIn: 'root',
 })
 export class DevicesService {
-  devices: BehaviorSubject<IDevice[]> = new BehaviorSubject<IDevice[]>([]);
+  public devices: BehaviorSubject<IDevice[]> = new BehaviorSubject<IDevice[]>(
+    []
+  );
 
-  devices$: Observable<IDevice[]> = this.devices.asObservable();
+  public devices$: Observable<IDevice[]> = this.devices.asObservable();
 
   //При инициализации список устройств проходит проверку на наличие данных в localstorage
-  getAllDevices = () => {
+  public getAllDevices() {
     const deviceList: string | null = localStorage.getItem('deviceList');
     //Если localstorage не пуст - берем из него список
     if (this.devices$) {
@@ -23,10 +25,10 @@ export class DevicesService {
         localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
       }
     }
-  };
+  }
 
   //Создание устройства
-  createDevice = (device: IDevice): void => {
+  public createDevice(device: IDevice): void {
     const newDevice: IDevice = {
       ...device,
       lastActivity: new Date().toLocaleDateString(),
@@ -37,21 +39,21 @@ export class DevicesService {
       this.devices.next(newDeviceList);
     });
     localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
-  };
+  }
 
   //Удаление устройства
-  removeDevice = (id: string): void => {
+  public removeDevice(id: string): void {
     const currentDevices: IDevice[] = this.devices.value;
     const newDeviceList: IDevice[] = currentDevices.filter(
       (device) => device.id !== id
     );
     this.devices.next(newDeviceList);
     localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
-  };
+  }
 
   //Сброс списка устройства
-  resetDeviceList = (): void => {
+  public resetDeviceList(): void {
     this.devices.next(devices);
     localStorage.setItem('deviceList', JSON.stringify(this.devices.value));
-  };
+  }
 }

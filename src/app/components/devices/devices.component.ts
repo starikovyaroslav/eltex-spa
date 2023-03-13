@@ -10,12 +10,12 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class DevicesComponent implements OnInit {
   constructor(private devicesService: DevicesService) {}
-  dataSource!: IDevice[];
-  totalItems!: number;
-  pageSize: number = 5;
-  currentPageIndex: number = 0;
-  devices$: Observable<IDevice[]> = this.devicesService.devices;
-  displayedColumns: string[] = [
+  public dataSource!: IDevice[];
+  public totalItems!: number;
+  public pageSize: number = 5;
+  public currentPageIndex: number = 0;
+  public devices$: Observable<IDevice[]> = this.devicesService.devices;
+  public displayedColumns: string[] = [
     'id',
     'title',
     'deviceType',
@@ -30,21 +30,7 @@ export class DevicesComponent implements OnInit {
     'action',
   ];
 
-  ngOnInit(): void {
-    this.loadPage();
-  }
-
-  removeDevice = (id: string): void => {
-    this.devicesService.removeDevice(id);
-  };
-
-  pageChanged(event: PageEvent) {
-    this.currentPageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.loadPage();
-  }
-
-  loadPage = (): void => {
+  private loadPage(): void {
     this.devices$.subscribe({
       next: (res) => {
         this.dataSource = res.slice(
@@ -54,5 +40,19 @@ export class DevicesComponent implements OnInit {
         this.totalItems = res.length;
       },
     });
-  };
+  }
+
+  public ngOnInit(): void {
+    this.loadPage();
+  }
+
+  public removeDevice(id: string): void {
+    this.devicesService.removeDevice(id);
+  }
+
+  public pageChanged(event: PageEvent): void {
+    this.currentPageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadPage();
+  }
 }

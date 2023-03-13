@@ -11,10 +11,10 @@ export class AppComponent implements OnInit {
   constructor(private devicesService: DevicesService) {}
 
   title = 'eltex-spa';
-  devices$!: Observable<IDevice[]>;
+  public devices$!: Observable<IDevice[]>;
 
   // При инициализации получаем список устройств
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.devicesService.getAllDevices();
   }
 }

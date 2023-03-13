@@ -11,11 +11,11 @@ import { houseId } from '../../data/houseId';
   styleUrls: ['./modal-form.component.scss'],
 })
 export class ModalFormComponent {
-  deviceForm: FormGroup;
+  public deviceForm: FormGroup;
 
-  houseId: IHouseId[] = houseId;
+  public houseId: IHouseId[] = houseId;
 
-  deviceType: DeviceType[] = [
+  public deviceType: DeviceType[] = [
     DeviceType.ELTEX_DIMMER,
     DeviceType.ELTEX_MOTION,
     DeviceType.ELTEX_SZ_AIR,
@@ -23,7 +23,7 @@ export class ModalFormComponent {
     DeviceType.ELTEX_SOCKET,
   ];
 
-  status: Status[] = [
+  public status: Status[] = [
     Status.INITIALIZING,
     Status.OFFLINE,
     Status.ONLINE,
@@ -53,7 +53,7 @@ export class ModalFormComponent {
     });
   }
 
-  onFormSubmit() {
+  public onFormSubmit(): void {
     if (this.deviceForm.valid) {
       this.deviceService.createDevice(this.deviceForm.value);
       this.dialogRef.close(true);
