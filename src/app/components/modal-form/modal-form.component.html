@@ -7,38 +7,41 @@
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
         <input
-          required
           matInput
           type="text"
           placeholder="Title"
           formControlName="title"
         />
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Device Type</mat-label>
-        <mat-select required formControlName="deviceType">
+        <mat-select formControlName="deviceType">
           <mat-option *ngFor="let val of deviceType" [value]="val"
             >{{ val }}
           </mat-option>
         </mat-select>
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>HouseID</mat-label>
-        <mat-select required formControlName="houseId">
+        <mat-select formControlName="houseId">
           <mat-option *ngFor="let val of houseId" [value]="val"
             >{{ val.name }}
           </mat-option>
         </mat-select>
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
-        <mat-select required formControlName="status">
+        <mat-select formControlName="status">
           <mat-option *ngFor="let val of status" [value]="val"
             >{{ val }}
           </mat-option>
         </mat-select>
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
     </div>
 
@@ -54,44 +57,34 @@
       <mat-form-field appearance="outline">
         <mat-label>Locations</mat-label>
         <input
-          required
           matInput
           type="text"
           placeholder="Locations"
           formControlName="locations"
         />
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
     </div>
     <div class="row" formGroupName="settings">
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input
-          required
-          matInput
-          type="text"
-          placeholder="Name"
-          formControlName="name"
-        />
+        <input matInput type="text" placeholder="Name" formControlName="name" />
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Port</mat-label>
-        <input
-          required
-          matInput
-          type="text"
-          placeholder="Port"
-          formControlName="port"
-        />
+        <input matInput type="text" placeholder="Port" formControlName="port" />
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input
-          required
           matInput
           type="password"
           placeholder="Password"
           formControlName="password"
         />
+        <mat-error>Поле обязательно для запролнения</mat-error>
       </mat-form-field>
     </div>
   </div>

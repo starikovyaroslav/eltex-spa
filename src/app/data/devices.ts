@@ -9,7 +9,7 @@ export const devices: IDevice[] = [
     houseId: { name: 'Частный дом №5', id: 'ph5' },
     lastActivity: '10.02.2023',
     status: Status.ONLINE,
-    locations: ['location'],
+    locations: ['Екатеринбург'],
     settings: { name: 'Устройство-1', port: '1', password: '123' },
   },
   {
@@ -20,7 +20,7 @@ export const devices: IDevice[] = [
     houseId: { name: 'Квартира №53', id: '53' },
     lastActivity: '01.04.2022',
     status: Status.INITIALIZING,
-    locations: ['location'],
+    locations: ['Новосибирск'],
     settings: { name: 'Устройство-2', port: '2', password: '123' },
   },
   {
@@ -31,7 +31,7 @@ export const devices: IDevice[] = [
     houseId: { name: 'Квартира №3', id: '3' },
     lastActivity: '03.02.2021',
     status: Status.OFFLINE,
-    locations: ['location'],
+    locations: ['Москва'],
     settings: { name: 'Устройство-3', port: '3', password: '123' },
   },
 ];
