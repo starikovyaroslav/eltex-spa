@@ -41,7 +41,7 @@ export class ModalFormComponent {
     this.deviceForm = this.formBuilder.group({
       title: '',
       deviceType: DeviceType['' as keyof typeof DeviceType],
-      enabled: '',
+      enabled: this.enabled,
       houseId: '',
       status: Status['' as keyof typeof Status],
       locations: [''],
