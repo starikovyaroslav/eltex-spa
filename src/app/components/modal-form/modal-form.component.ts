@@ -40,7 +40,6 @@ export class ModalFormComponent {
       deviceType: DeviceType['' as keyof typeof DeviceType],
       enabled: '',
       houseId: '',
-      lastActivity: '',
       status: Status['' as keyof typeof Status],
       locations: [''],
       settings: this.formBuilder.group({

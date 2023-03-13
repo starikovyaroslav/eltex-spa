@@ -26,7 +26,7 @@ export interface IDevice {
   deviceType: DeviceType;
   enabled: boolean;
   houseId: string;
-  lastActivity: number;
+  lastActivity: string;
   status: Status;
   locations: string[];
   settings: ISettings;

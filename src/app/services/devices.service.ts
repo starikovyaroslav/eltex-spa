@@ -29,6 +29,7 @@ export class DevicesService {
   createDevice = (device: IDevice): void => {
     const newDevice: IDevice = {
       ...device,
+      lastActivity: new Date().toLocaleDateString(),
       id: String(Date.now()),
     };
     this.devices$.pipe(take(1)).subscribe((value) => {
