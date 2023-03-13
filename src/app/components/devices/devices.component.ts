@@ -3,13 +3,19 @@ import { IDevice } from '../../models/device';
 import { Observable } from 'rxjs';
 import { DevicesService } from '../../services/devices.service';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
 })
 export class DevicesComponent implements OnInit {
-  constructor(private devicesService: DevicesService) {}
+  constructor(
+    private devicesService: DevicesService,
+    private dialog: MatDialog
+  ) {}
+  openedModal: boolean = false;
   public dataSource!: IDevice[];
   public totalItems!: number;
   public pageSize: number = 5;
@@ -46,8 +52,8 @@ export class DevicesComponent implements OnInit {
     this.loadPage();
   }
 
-  public removeDevice(id: string): void {
-    this.devicesService.removeDevice(id);
+  public openModal(id: string): void {
+    this.dialog.open(ModalConfirmComponent, { id });
   }
 
   public pageChanged(event: PageEvent): void {
