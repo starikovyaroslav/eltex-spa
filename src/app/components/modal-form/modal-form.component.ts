@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DevicesService } from '../../services/devices.service';
-import { DeviceType, Status } from '../../models/device';
+import { DeviceType, IHouseId, Status } from '../../models/device';
+import { houseId } from '../../data/houseId';
 
 @Component({
   selector: 'app-modal-form',
@@ -10,9 +11,11 @@ import { DeviceType, Status } from '../../models/device';
   styleUrls: ['./modal-form.component.scss'],
 })
 export class ModalFormComponent {
-  deviceForm: FormGroup;
+  public deviceForm: FormGroup;
 
-  deviceType: DeviceType[] = [
+  public houseId: IHouseId[] = houseId;
+
+  public deviceType: DeviceType[] = [
     DeviceType.ELTEX_DIMMER,
     DeviceType.ELTEX_MOTION,
     DeviceType.ELTEX_SZ_AIR,
@@ -20,7 +23,7 @@ export class ModalFormComponent {
     DeviceType.ELTEX_SOCKET,
   ];
 
-  status: Status[] = [
+  public status: Status[] = [
     Status.INITIALIZING,
     Status.OFFLINE,
     Status.ONLINE,
@@ -28,7 +31,9 @@ export class ModalFormComponent {
     Status.UNKNOWN,
   ];
 
-  enabled: boolean = true;
+  public enabled: boolean = true;
+
+  public errorMessage: string = 'Поле обязательно для заполнения';
 
   constructor(
     private deviceService: DevicesService,
@@ -36,22 +41,24 @@ export class ModalFormComponent {
     private dialogRef: MatDialogRef<ModalFormComponent>
   ) {
     this.deviceForm = this.formBuilder.group({
-      title: '',
-      deviceType: DeviceType['' as keyof typeof DeviceType],
-      enabled: '',
-      houseId: '',
-      lastActivity: '',
-      status: Status['' as keyof typeof Status],
-      locations: [''],
+      title: ['', Validators.required],
+      deviceType: [
+        DeviceType['' as keyof typeof DeviceType],
+        Validators.required,
+      ],
+      enabled: this.enabled,
+      houseId: ['', Validators.required],
+      status: [Status['' as keyof typeof Status], Validators.required],
+      locations: ['', Validators.required],
       settings: this.formBuilder.group({
-        name: '',
-        port: '',
-        password: '',
+        name: ['', Validators.required],
+        port: ['', Validators.required],
+        password: ['', Validators.required],
       }),
     });
   }
 
-  onFormSubmit() {
+  public onFormSubmit(): void {
     if (this.deviceForm.valid) {
       this.deviceService.createDevice(this.deviceForm.value);
       this.dialogRef.close(true);

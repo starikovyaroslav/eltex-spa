@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+  <h1>Вы действительно хотите удалите это устройство?</h1>
+</div>
+<div mat-dialog-content class="content">
+  <div class="buttons">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">
+      Отмена
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      type="button"
+      (click)="removeDevice()"
+    >
+      Удалить
+    </button>
+  </div>
+</div>

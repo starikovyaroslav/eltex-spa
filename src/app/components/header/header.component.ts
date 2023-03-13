@@ -14,11 +14,11 @@ export class HeaderComponent {
     private dialog: MatDialog
   ) {}
 
-  resetDeviceList = () => {
+  public resetDeviceList(): void {
     this.devicesService.resetDeviceList();
-  };
+  }
 
-  openModal() {
-    const dialogRef = this.dialog.open(ModalFormComponent);
+  public openModal(): void {
+    this.dialog.open(ModalFormComponent);
   }
 }

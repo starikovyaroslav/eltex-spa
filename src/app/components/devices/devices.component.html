@@ -21,7 +21,7 @@
 
   <ng-container matColumnDef="houseId">
     <th mat-header-cell *matHeaderCellDef>{{ "houseId" | uppercase }}</th>
-    <td mat-cell *matCellDef="let device">{{ device.houseId }}</td>
+    <td mat-cell *matCellDef="let device">{{ device.houseId.name }}</td>
   </ng-container>
 
   <ng-container matColumnDef="lastActivity">
@@ -65,7 +65,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>{{ "action" | uppercase }}</th>
     <td mat-cell *matCellDef="let device">
-      <button mat-icon-button color="warn" (click)="removeDevice(device.id)">
+      <button mat-icon-button color="warn" (click)="openModal(device.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
