@@ -26,13 +26,11 @@
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>HouseID</mat-label>
-        <input
-          required
-          matInput
-          type="text"
-          placeholder="HouseID"
-          formControlName="houseId"
-        />
+        <mat-select required formControlName="houseId">
+          <mat-option *ngFor="let val of houseId" [value]="val"
+            >{{ val.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>

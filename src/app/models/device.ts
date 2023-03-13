@@ -20,12 +20,17 @@ export interface ISettings {
   password: string;
 }
 
+export interface IHouseId {
+  name: string;
+  id: string;
+}
+
 export interface IDevice {
   id: string;
   title: string;
   deviceType: DeviceType;
   enabled: boolean;
-  houseId: string;
+  houseId: IHouseId;
   lastActivity: string;
   status: Status;
   locations: string[];

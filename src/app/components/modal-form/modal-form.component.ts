@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DevicesService } from '../../services/devices.service';
-import { DeviceType, Status } from '../../models/device';
+import { DeviceType, IHouseId, Status } from '../../models/device';
+import { houseId } from '../../data/houseId';
 
 @Component({
   selector: 'app-modal-form',
@@ -11,6 +12,8 @@ import { DeviceType, Status } from '../../models/device';
 })
 export class ModalFormComponent {
   deviceForm: FormGroup;
+
+  houseId: IHouseId[] = houseId;
 
   deviceType: DeviceType[] = [
     DeviceType.ELTEX_DIMMER,
