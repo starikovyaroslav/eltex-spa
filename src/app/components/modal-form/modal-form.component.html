@@ -12,7 +12,7 @@
           placeholder="Title"
           formControlName="title"
         />
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Device Type</mat-label>
@@ -21,7 +21,7 @@
             >{{ val }}
           </mat-option>
         </mat-select>
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
@@ -32,7 +32,7 @@
             >{{ val.name }}
           </mat-option>
         </mat-select>
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
@@ -41,7 +41,7 @@
             >{{ val }}
           </mat-option>
         </mat-select>
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
     </div>
 
@@ -62,19 +62,19 @@
           placeholder="Locations"
           formControlName="locations"
         />
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row" formGroupName="settings">
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput type="text" placeholder="Name" formControlName="name" />
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Port</mat-label>
         <input matInput type="text" placeholder="Port" formControlName="port" />
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
@@ -84,7 +84,7 @@
           placeholder="Password"
           formControlName="password"
         />
-        <mat-error>Поле обязательно для запролнения</mat-error>
+        <mat-error>{{ errorMessage }}</mat-error>
       </mat-form-field>
     </div>
   </div>

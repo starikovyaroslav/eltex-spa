@@ -31,7 +31,9 @@ export class ModalFormComponent {
     Status.UNKNOWN,
   ];
 
-  enabled: boolean = true;
+  public enabled: boolean = true;
+
+  public errorMessage: string = 'Поле обязательно для заполнения';
 
   constructor(
     private deviceService: DevicesService,
