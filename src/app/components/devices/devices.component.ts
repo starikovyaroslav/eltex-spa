@@ -14,7 +14,7 @@ export class DevicesComponent implements OnInit {
   public totalItems!: number;
   public pageSize: number = 5;
   public currentPageIndex: number = 0;
-  public devices$: Observable<IDevice[]> = this.devicesService.devices;
+  public devices: Observable<IDevice[]> = this.devicesService.devices;
   public displayedColumns: string[] = [
     'id',
     'title',
@@ -31,7 +31,7 @@ export class DevicesComponent implements OnInit {
   ];
 
   private loadPage(): void {
-    this.devices$.subscribe({
+    this.devices.subscribe({
       next: (res) => {
         this.dataSource = res.slice(
           this.currentPageIndex * this.pageSize,

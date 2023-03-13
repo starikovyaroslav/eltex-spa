@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IDevice } from '../models/device';
 import { devices } from '../data/devices';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +11,11 @@ export class DevicesService {
     []
   );
 
-  public devices$: Observable<IDevice[]> = this.devices.asObservable();
-
   //При инициализации список устройств проходит проверку на наличие данных в localstorage
   public getAllDevices() {
     const deviceList: string | null = localStorage.getItem('deviceList');
     //Если localstorage не пуст - берем из него список
-    if (this.devices$) {
+    if (this.devices.getValue().length == 0) {
       if (deviceList !== null) {
         this.devices.next(JSON.parse(deviceList));
       } else {
@@ -34,7 +32,7 @@ export class DevicesService {
       lastActivity: new Date().toLocaleDateString(),
       id: String(Date.now()),
     };
-    this.devices$.pipe(take(1)).subscribe((value) => {
+    this.devices.pipe(take(1)).subscribe((value) => {
       const newDeviceList: IDevice[] = [newDevice, ...value];
       this.devices.next(newDeviceList);
     });
